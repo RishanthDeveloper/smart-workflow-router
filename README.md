@@ -1,226 +1,30 @@
-# Smart Workflow Router
+# 🧠 Smart Workflow Router: Reinforcement Learning for Enterprise
 
-An intelligent workflow management and routing platform designed to automate task assignment, optimize process flow, and improve operational efficiency using modern backend architecture and AI-driven decision logic.
+![Python](https://img.shields.io/badge/Python-FastAPI-blue)
+![Java](https://img.shields.io/badge/Java-Spring_Boot-green)
+![React](https://img.shields.io/badge/React-Vite-61DAFB)
+![PyTorch](https://img.shields.io/badge/PyTorch-Deep_Q--Network-red)
 
----
+## 📌 The Problem
+Traditional business software uses static, rule-based routing (e.g., "If a ticket is about billing, send to the Accounting queue"). This fails to account for human variables: certain agents resolve specific types of problems faster than others, and agent proficiency changes over time. 
 
-## Overview
+## 🚀 The Solution
+This project replaces static IF/THEN rules with an AI-driven **Deep Q-Network (DQN)**. 
+1. **The User** submits a support ticket via the React frontend.
+2. **The Java Backend** receives the ticket and asks the AI who should handle it.
+3. **The Python AI Engine** observes the ticket (Category, Urgency) and predicts the best human agent based on past performance.
+4. **Reinforcement Learning:** When the ticket is resolved, the system calculates a "Reward" based on resolution speed. The AI continuously learns who is best at what, naturally optimizing the company's operational efficiency.
 
-Smart Workflow Router is a modern enterprise-style application that helps organizations automatically route tasks, tickets, approvals, or requests to the appropriate teams or users based on predefined rules, priority levels, workload balancing, and AI-assisted recommendations.
+## 🏗️ Tech Stack
+* **Frontend:** React.js, Tailwind CSS (User Dashboard)
+* **Core Backend:** Java 17, Spring Boot (REST APIs, Workflow Management)
+* **AI Engine:** Python, PyTorch, FastAPI (DQN Algorithm)
 
-The platform provides secure authentication, workflow tracking, analytics dashboards, and scalable REST APIs for integration with other systems.
+## ⚙️ How to Run Locally
 
----
-
-## Features
-
-### Core Features
-- Smart task routing system
-- Dynamic workflow management
-- Role-based access control
-- Real-time workflow tracking
-- Admin management dashboard
-- Task priority handling
-- Workflow history and logs
-- REST API architecture
-
-### AI-Powered Features
-- Intelligent routing suggestions
-- Priority prediction
-- Sentiment-based ticket classification
-- Automated response recommendations
-
-### Security Features
-- JWT Authentication
-- Secure API endpoints
-- Password encryption
-- Role-based authorization
-
----
-
-## Tech Stack
-
-### Backend
-- Java
-- Spring Boot
-- Spring Security
-- Spring Data JPA
-- REST APIs
-
-### Frontend
-- React
-- Axios
-- Bootstrap / Tailwind CSS
-
-### Database
-- MySQL
-
-### AI Integration
-- OpenAI API / Python ML Model
-
-### Tools
-- GitHub
-- Postman
-- Maven
-
----
-
-## System Architecture
-
-```text
-Frontend (React)
-        ↓
-Spring Boot REST APIs
-        ↓
-Workflow Engine + AI Logic
-        ↓
-MySQL Database
-```
-
----
-
-## Modules
-
-### User Module
-- User registration
-- Login authentication
-- Role management
-
-### Workflow Module
-- Create workflows
-- Assign workflows
-- Update workflow status
-- Track workflow progress
-
-### AI Engine
-- Suggest best routing path
-- Analyze request priority
-- Predict workflow delays
-
-### Admin Dashboard
-- Workflow analytics
-- User monitoring
-- Performance statistics
-
----
-
-## Screenshots
-
-### Dashboard
-![Dashboard](screenshots/dashboard.png)
-
-### Workflow Management
-![Workflow](screenshots/workflow.png)
-
-### Analytics
-![Analytics](screenshots/analytics.png)
-
-### Login Page
-![Login](screenshots/login.png)
-
----
-
-## Installation Guide
-
-### Clone Repository
-
+### 1. Start the AI Engine (Python)
+Navigate to the `rl-engine` folder, install the dependencies, and start the FastAPI server:
 ```bash
-git clone https://github.com/your-username/smart-workflow-router.git
-```
-
----
-
-### Backend Setup
-
-```bash
-cd backend
-mvn spring-boot:run
-```
-
-Backend runs on:
-
-```text
-http://localhost:8080
-```
-
----
-
-### Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm start
-```
-
-Frontend runs on:
-
-```text
-http://localhost:3000
-```
-
----
-
-## Database Configuration
-
-Update:
-
-```text
-src/main/resources/application.properties
-```
-
-Example:
-
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/workflow_router
-spring.datasource.username=root
-spring.datasource.password=your_password
-
-spring.jpa.hibernate.ddl-auto=update
-```
-
----
-
-## API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | /api/auth/register | Register User |
-| POST | /api/auth/login | User Login |
-| GET | /api/workflows | Get All Workflows |
-| POST | /api/workflows | Create Workflow |
-| PUT | /api/workflows/{id} | Update Workflow |
-| POST | /api/ai/suggest | AI Routing Suggestion |
-
----
-
-## Future Enhancements
-
-- WebSocket real-time updates
-- Docker deployment
-- Kubernetes support
-- Cloud deployment on AWS
-- Multi-language support
-- Advanced AI workflow optimization
-
----
-
-## Project Goals
-
-- Reduce manual workflow management
-- Improve enterprise productivity
-- Automate task distribution
-- Enhance decision-making using AI
-- Build scalable workflow infrastructure
-
----
-
-## Author
-
-Your Name
-
----
-
-## License
-
-This project is licensed under the MIT License.
+cd rl-engine
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
